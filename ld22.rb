@@ -1,6 +1,9 @@
-require "rubygems"
-require "gosu"
-require "chingu"
+require 'rubygems'
+require 'bundler/setup'
+require 'gosu'
+require 'chingu'
+
+# Sokobot - A Sokoban game I made for Ludum Dare 22.
 Chingu::Text.trait :asynchronous
 $levels = {
 	:head => [
@@ -209,18 +212,18 @@ class Level < Chingu::GameState
 			x, y = *@robot_index
 			if(y > 0)
 				case @map[y - 1][x]
-					when 0:
+					when 0
 					# if(@map[y - 1][x].zero?)
 						@map[y][x] = 0
 						@map[y - 1][x] = 2
-					when 3:
+					when 3
 					# elsif(@map[y - 1][x] == 3)
 						if(y - 1 > 0 && @map[y - 2][x].zero?)
 							@map[y][x] = 0
 							@map[y - 1][x] = 2
 							@map[y - 2][x] = 3
 						end
-					when 4:
+					when 4
 						win
 				end
 			end
@@ -229,18 +232,18 @@ class Level < Chingu::GameState
 			x, y = *@robot_index
 			if(y < @map.length)
 				case @map[y + 1][x]
-					when 0:
+					when 0
 					# if(@map[y + 1][x].zero?)
 						@map[y][x] = 0
 						@map[y + 1][x] = 2
-					when 3:
+					when 3
 					# elsif(@map[y + 1][x] == 3)
 						if(y + 1 < @map.length && @map[y + 2][x].zero?)
 							@map[y][x] = 0
 							@map[y + 1][x] = 2
 							@map[y + 2][x] = 3
 						end
-					when 4:
+					when 4
 						win
 				end
 			end
@@ -249,18 +252,18 @@ class Level < Chingu::GameState
 			x, y = *@robot_index
 			if(x > 0)
 				case @map[y][x - 1]
-					when 0:
+					when 0
 					# if(@map[y][x - 1].zero?)
 						@map[y][x] = 0
 						@map[y][x - 1] = 2
-					when 3:
+					when 3
 					# elsif(@map[y][x - 1] == 3)
 						if(x - 1 > 0 && @map[y][x - 2].zero?)
 							@map[y][x] = 0
 							@map[y][x - 1] = 2
 							@map[y][x - 2] = 3
 						end
-					when 4:
+					when 4
 						win
 				end	
 			end
@@ -269,18 +272,18 @@ class Level < Chingu::GameState
 			x, y = *@robot_index
 			if(x < @map[y].length)
 				case @map[y][x + 1]
-					when 0:
+					when 0
 					# if(@map[y][x + 1].zero?)
 						@map[y][x] = 0
 						@map[y][x + 1] = 2
-					when 3:
+					when 3
 					# elsif(@map[y][x + 1] == 3)
 						if(x + 1 < @map[y].length && @map[y][x + 2].zero?)
 							@map[y][x] = 0
 							@map[y][x + 1] = 2
 							@map[y][x + 2] = 3
 						end
-					when 4:
+					when 4
 						win
 				end
 			end
@@ -297,14 +300,14 @@ class Level < Chingu::GameState
 		@map.each do |row|
 			row.each do |col|
 				case col
-					when 1:
+					when 1
 						@wall.draw(x * 32, y * 32, 0)
-					when 2:
+					when 2
 						@robot_index = [x, y]
 						@robot.draw(x * 32, y * 32, 0)
-					when 3:
+					when 3
 						@block.draw(x * 32, y * 32, 0)
-					when 4:
+					when 4
 						# @part.draw(x * 32, y * 32, 0)
 						@parts[@options[:level]].draw(x * 32, y * 32, 0)
 				end
