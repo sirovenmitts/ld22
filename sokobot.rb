@@ -3,7 +3,7 @@ require 'bundler/setup'
 require 'gosu'
 require 'chingu'
 
-# Sokobot - A Sokoban game I made for Ludum Dare 22.
+# Sokobot - A Sokoban game I made for Ludum Dare 22.`
 Chingu::Text.trait :asynchronous
 $levels = {
 	:head => [
